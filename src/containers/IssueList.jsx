@@ -27,7 +27,7 @@ class IssueLists extends React.PureComponent {
 
 export const mapStateToProps = (state) => {
     return {
-        data: state
+        data: state.gitData
     }
 };
 

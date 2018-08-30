@@ -1,20 +1,21 @@
 import { fromJS } from 'immutable';
-import rootReducer from '../src/containers/reducers';
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from 'redux-saga';
-import sagas from '../src/containers/sagas';
+import { rootSaga } from './rootSaga';
+import rootReducer from '../src/containers/reducers';
 
 const sagaMiddleWare = createSagaMiddleware();
 
 const initialState = fromJS({
     data: [],
+    detail: null,
     error: null,
 });  
 
 //const Store = createStore(reducers,  initialState, window.devToolsExtension && window.devToolsExtension(), applyMiddleware(thunk) );
 //const Store = createStore(reducers,  initialState,  applyMiddleware(thunk) );
-const Store = createStore(rootReducer,  initialState,  applyMiddleware(sagaMiddleWare) );
+const Store = createStore(rootReducer, initialState,  compose(applyMiddleware(sagaMiddleWare), window.devToolsExtension ? window.devToolsExtension() : f => f) );
 
-sagaMiddleWare.run(sagas);
+sagaMiddleWare.run(rootSaga);
 
 export default Store;

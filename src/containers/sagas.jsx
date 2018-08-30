@@ -9,8 +9,6 @@ const fetchProductsJson = () => {
     return fetch("https://api.github.com/repos/vmg/redcarpet/issues")
         .then( resp => {
             return resp.json().then( data => {
-                console.log("Sagas", data);
-
                 return data;
             })
         })

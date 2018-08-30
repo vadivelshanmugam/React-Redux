@@ -1,6 +1,41 @@
+.col1 {
+    width: 10%;
+    float: left;
+}
+
+.col11 {
+    width: 90%;
+    float: left;
+}
+
+.clr1 {
+    color: #333;
+}
+
+.clr2 {
+    color: #aaa;
+}
+
+.clr3 {
+    color: #555;
+}
+
 img {
     vertical-align: middle;
     margin-right: 5px;
+}
+
+.avatarImg {
+    max-width: 90%;
+    border-radius: 3px;
+}
+
+.boldTxt {
+    font-weight: bold;
+}
+
+.pageSubHeading {
+    text-transform: capitalize;
 }
 
 .issueDetails {
@@ -10,6 +45,18 @@ img {
 .issueSub {
     font-size: 12px;
     color: #767676;
+}
+
+.pageHeading {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: normal;
+    margin: 10px 0;
 }
 
 h3 {
@@ -23,16 +70,33 @@ a {
     text-decoration: none;
 }
 
+.pageContainer {
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
 .heading {
     font-size: 14px;
     background-color: #f8f8f8;
-    border: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
     padding: 15px;
     margin: 0;
 }
 
 .issueItem {
-    border: 1px solid #e5e5e5;
-    border-top: 0;
+    border-bottom: 1px solid #e5e5e5;    
     padding: 15px;
+}
+
+.stateOpen {
+    background-color: #6cc644;
+    padding: 4px 8px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.fontLight {
+    font-weight: 200;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'react-image';
 import PropTypes from 'prop-types';
+import { Link } from "react-browser-router";
+
 import './IssueList.css';
 import iIcon from '../icons/notificationAlert.svg';
 
@@ -22,7 +24,7 @@ class IssueList extends React.Component {
               return (<div key={index} data={item} className="issueItem">
                     <Image src={iIcon} width={16} height={16}/>
                     <div className="issueDetails">
-                        <h3><a href={item.url}>{item.title}</a></h3>
+                        <h3><Link to={"/view/" + item.number}>{item.title}</Link></h3>
                         <div className="issueSub">{`#`}{item.number} {item.state} {`by`} {item.user.login}</div>
                     </div>
                     {/* <div>{`Comments: `} {item.comments}</div>
@@ -32,8 +34,13 @@ class IssueList extends React.Component {
         };
 
         return <React.Fragment>
-            {this.props.data && getIssueCount()}
-            <div className="issueList">{this.props.data && getIssueList()}</div>
+            <header className="App-header">
+                <h1 className="App-title">facebook/create-react-app</h1>
+            </header>
+            <div className="pageContainer">
+                {this.props.data && getIssueCount()}
+                <div className="issueList">{this.props.data && getIssueList()}</div>
+            </div>
         </React.Fragment>;
     }
 }
