@@ -20,7 +20,6 @@ const fetchProductsJson = () => {
 function* getIssueList() {
     try {
         const products = yield call(fetchProductsJson);
-
         yield put(getIssueListSuccess(products));
     } catch (e) {
         return yield put(getIssueListError());

@@ -9,6 +9,7 @@ const sagaMiddleWare = createSagaMiddleware();
 const initialState = fromJS({
     data: [],
     detail: null,
+    comments: null,
     error: null,
 });  
 

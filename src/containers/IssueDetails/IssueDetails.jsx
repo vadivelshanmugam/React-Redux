@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getIssueDetails } from './actions';
+import { getIssueDetails, getCommentDetails } from './actions';
 import IssueDetail from '../../components/IssueDetail/IssueDetail';
 
 const propTypes = {
@@ -17,18 +17,22 @@ class IssueDetails extends React.PureComponent {
     componentDidMount() {
         const ids = this.props.match.params.id;
         this.props.fetchIssueDetails(ids);
+        this.props.fetchCommentDetails(ids);
     }
 
     render() {
+
+
         return (
-            <IssueDetail {...this.props.detail} />
+            <IssueDetail {...this.props.detail} {...this.props.comments} />
         );
     }
 }
 
 export const mapStateToProps = (state) => {
     return {
-        detail: state.gitDetail
+        detail: state.gitDetail,
+        comments: state.gitComment
     }
 };
 
@@ -41,6 +45,9 @@ export const matchDispatchToProps = dispatch => {
     fetchIssueDetails: (params) => {
       dispatch(getIssueDetails(params));
     },
+    fetchCommentDetails: (params) => {
+        dispatch(getCommentDetails(params));
+      },
   };
 };
 

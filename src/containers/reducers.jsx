@@ -4,17 +4,18 @@ import {
   FETCH_ISSUE_LIST,
   FETCH_ISSUE_LIST_ERROR,
   FETCH_ISSUE_LIST_SUCCESS,
-} from './constants';
-
-import {
   FETCH_ISSUE_DETAILS,
   FETCH_ISSUE_DETAILS_ERROR,
   FETCH_ISSUE_DETAILS_SUCCESS,
+  FETCH_COMMENT_DETAILS,
+  FETCH_COMMENT_DETAILS_ERROR,
+  FETCH_COMMENT_DETAILS_SUCCESS,
 } from './constants';
 
 const initialState = fromJS({
   data: [],
   detail: null,
+  comments: null,
   error: null,
 });
 
@@ -44,7 +45,21 @@ const gitDetailsReducer = (state = initialState, action) => {
   }
 }
 
+const gitCommentReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_COMMENT_DETAILS:
+      return Object.assign({}, state, {error : null});
+    case FETCH_COMMENT_DETAILS_SUCCESS:
+      return Object.assign({}, state, {comments : action.data});
+    case FETCH_COMMENT_DETAILS_ERROR:
+      return Object.assign({}, state, {error : 'error'});
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   gitData: gitReducer,
   gitDetail: gitDetailsReducer,
+  gitComment: gitCommentReducer,
 });

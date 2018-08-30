@@ -21,7 +21,6 @@ function* getIssueDetails(args) {
     if(args.args !== undefined) {
         try {
             const products = yield call(fetchProductsJson, {params: args.args});
-
             yield put(getIssueDetailsSuccess(products));
         } catch (e) {
             return yield put(getIssueDetailsError());
@@ -29,8 +28,9 @@ function* getIssueDetails(args) {
     }
 }
 
-export function* sagas() {
+export function* sagasDetails() {
   yield takeEvery(FETCH_ISSUE_DETAILS, getIssueDetails);
 }
 
-export default sagas;
+export default sagasDetails;
+
