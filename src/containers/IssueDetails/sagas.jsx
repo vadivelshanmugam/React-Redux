@@ -5,7 +5,10 @@ import {
   getIssueDetailsError,
 } from './actions';
 
-const fetchProductsJson = (args) => {
+const fetchIssueDetailJson = (args) => {
+    if(isNaN(args.params)){
+        return
+    }
     return fetch("https://api.github.com/repos/vmg/redcarpet/issues/"+args.params)
         .then( resp => {
             return resp.json().then( data => {
@@ -20,7 +23,7 @@ const fetchProductsJson = (args) => {
 function* getIssueDetails(args) {
     if(args.args !== undefined) {
         try {
-            const products = yield call(fetchProductsJson, {params: args.args});
+            const products = yield call(fetchIssueDetailJson, {params: args.args});
             yield put(getIssueDetailsSuccess(products));
         } catch (e) {
             return yield put(getIssueDetailsError());

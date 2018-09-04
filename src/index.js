@@ -16,7 +16,7 @@ class ReduxedApp  extends React.Component{
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/" component={IssueLists} />
-                        <Route path="/view/:id" component={IssueDetails} />
+                        <Route exact path="/view/:id" component={IssueDetails} />
                     </Switch>
                 </BrowserRouter>
             </Provider>

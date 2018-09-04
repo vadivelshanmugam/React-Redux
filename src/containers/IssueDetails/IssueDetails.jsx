@@ -21,8 +21,6 @@ class IssueDetails extends React.PureComponent {
     }
 
     render() {
-
-
         return (
             <IssueDetail {...this.props.detail} {...this.props.comments} />
         );
@@ -47,7 +45,7 @@ export const matchDispatchToProps = dispatch => {
     },
     fetchCommentDetails: (params) => {
         dispatch(getCommentDetails(params));
-      },
+    },
   };
 };
 

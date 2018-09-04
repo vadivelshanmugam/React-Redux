@@ -20,9 +20,23 @@
     color: #555;
 }
 
-img {
+.noComment {
+    font-size: 32px;
+    color: #aaa;
+    margin: 110px auto;
+    text-align: center;
+    font-weight: 200;
+}
+
+.imgSvg {
     vertical-align: middle;
     margin-right: 5px;
+    color: #28a745;
+}
+
+.whiteInfo {
+    vertical-align: bottom;
+    font-weight: bold;
 }
 
 .avatarImg {
@@ -76,12 +90,25 @@ a {
     margin-bottom: 15px;
 }
 
-.heading {
-    font-size: 14px;
+.headingBlock {
     background-color: #f8f8f8;
     border-bottom: 1px solid #e5e5e5;
     padding: 15px;
+}
+
+.heading {
+    font-size: 14px;
     margin: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+select {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
 }
 
 .issueItem {
@@ -91,6 +118,15 @@ a {
 
 .stateOpen {
     background-color: #6cc644;
+    padding: 4px 8px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.stateClose {
+    background-color: #bd2c00;
     padding: 4px 8px;
     font-weight: 600;
     color: #fff;

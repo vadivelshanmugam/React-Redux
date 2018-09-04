@@ -7,6 +7,7 @@ import IssueList from '../components/IssueList';
 
 const propTypes = {
     fetchIssueList: PropTypes.func,
+    fetchIssueStateList: PropTypes.func,
 };
 
 class IssueLists extends React.PureComponent {
@@ -18,9 +19,13 @@ class IssueLists extends React.PureComponent {
         this.props.fetchIssueList();
     }
 
+    fetchIssueState = params => {
+        this.props.fetchIssueStateList(params);
+    };
+
     render() {
         return (
-            <IssueList {...this.props.data} />
+            <IssueList {...this.props.data} {...this.props.data.message} fetchIssueState={this.fetchIssueState} />
         );
     }
 }
@@ -39,6 +44,9 @@ export const matchDispatchToProps = dispatch => {
   return {
     fetchIssueList: () => {
       dispatch(getIssueList());
+    },
+    fetchIssueStateList: (params) => {
+        dispatch(getIssueList(params));
     },
   };
 };

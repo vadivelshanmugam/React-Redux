@@ -5,8 +5,15 @@ import {
   getIssueListError,
 } from './actions';
 
-const fetchProductsJson = () => {
-    return fetch("https://api.github.com/repos/vmg/redcarpet/issues")
+const fetchIssueJson = (args) => {
+    console.log("args", args)
+    let params = "";
+    if(args.params !== undefined && isNaN(args.params)) {
+        params = "?state="+args.params;
+    } else {
+        params = "";
+    }
+    return fetch("https://api.github.com/repos/vmg/redcarpet/issues"+params)
         .then( resp => {
             return resp.json().then( data => {
                 return data;
@@ -17,9 +24,9 @@ const fetchProductsJson = () => {
         })
 };
 
-function* getIssueList() {
+function* getIssueList(args) {
     try {
-        const products = yield call(fetchProductsJson);
+        const products = yield call(fetchIssueJson, {params: args.args});
         yield put(getIssueListSuccess(products));
     } catch (e) {
         return yield put(getIssueListError());
